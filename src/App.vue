@@ -1,22 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <DatePicker
+      :startDate="new Date('2015/01/01 08:00:00')"
+      :endDate="new Date('2022/12/31 08:00:00')"
+      :dateItemWidth="62"
+      @dateChange="dateChange" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DatePicker from './components/DatePicker.vue'
 
 export default {
   name: 'app',
+  methods: {
+    dateChange (date) {
+      console.log(JSON.stringify(date));
+    }
+  },
   components: {
-    HelloWorld
+    DatePicker
   }
 }
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
