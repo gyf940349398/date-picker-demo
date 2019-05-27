@@ -4,6 +4,7 @@
       :startDate="new Date('2015/01/01 08:00:00')"
       :endDate="new Date('2022/12/31 08:00:00')"
       :dateItemWidth="62"
+      :isDecrease="true"
       @dateChange="dateChange" />
   </div>
 </template>

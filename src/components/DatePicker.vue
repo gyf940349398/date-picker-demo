@@ -44,6 +44,11 @@ export default {
    dateItemWidth: {
      type: Number,
      default: DATE_ITEM_WIDTH
+   },
+   // 是否递减显示日期，默认:false
+   isDecrease: {
+     type: Boolean,
+     default: false
    }
   },
   data () {
@@ -81,7 +86,7 @@ export default {
         let endMonth = 0;
         if (i === startYear) {
           startMonth = this.startDate.getMonth() + 1;
-          endMonth = startYear === endYear ? this.endDate.getMonth() + 1 : 12;
+          endMonth = 12;
         } else if (i === endYear) {
           startMonth = 1;
           endMonth = this.endDate.getMonth() + 1;
@@ -98,7 +103,7 @@ export default {
         }
       }
 
-      this.dateList = dateList;
+      this.dateList = this.isDecrease ? dateList.reverse() : dateList;
     },
     updateDateListWrapperScrollLeft () {
       // 如果需要与游标对齐，scrollLeft应该为多少
@@ -208,7 +213,6 @@ export default {
   height: 40px;
   overflow-x: scroll;
   scroll-behavior: smooth;
-  /* overflow: hidden; */
   -webkit-overflow-scrolling: touch;
 }
 .date-list {
